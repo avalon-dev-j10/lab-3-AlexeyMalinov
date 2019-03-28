@@ -17,4 +17,17 @@ public interface Sort {
      * @param array массив, подлежащий сортировке
      */
     void sort(int[] array);
+
+    /**
+     * Выполняет перестановку элементов в массиве
+     * @param array
+     * @param index1
+     * @param index2
+     */
+
+    default void swap(int[] array, int index1, int index2) {
+        int temp = array[index1];
+        array[index1] = array[index2];
+        array[index2] = temp;
+    }
 }
