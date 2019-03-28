@@ -21,8 +21,31 @@ public class ShellSort implements Sort {
      * {@inheritDoc}
      */
     public void sort(int[] array) {
-        /*
-         * TODO(Студент): Реализовать метод sort класса ShellSort
-         */
+        int increment = array.length / 2;
+        while (increment >= 1) {
+            for (int i = 0; i < increment; i++) {
+                insertionSort(array, i, increment);
+            }
+            increment /= 2;
+        }
+    }
+
+    /**
+     * Метод выполняющий сортировку вставкой над подмассивом
+     *
+     * @param array
+     * @param startIndex
+     * @param increment
+     */
+    private void insertionSort(int[] array, int startIndex, int increment) {
+        for (int i = startIndex; i < array.length - 1; i = i + increment) {
+            for (int j = Math.min(i + increment, array.length - 1); j - increment >= 0; j = j - increment) {
+                if (array[j - increment] > array[j]) {
+                    swap(array, j - increment, j);
+                } else {
+                    break;
+                }
+            }
+        }
     }
 }
